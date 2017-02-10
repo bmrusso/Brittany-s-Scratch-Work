@@ -12,6 +12,7 @@ uncorrseismograms=zeros(length(strtdate)*6,200*7197);
 corrseismograms=uncorrseismograms;
 time=uncorrseismograms;
 vecrate = [];
+location2 = [];
 
 for tele=1:4%length(strtdate)
     
@@ -29,31 +30,36 @@ for tele=1:4%length(strtdate)
     dta = irisFetch.Traces('US','WMOK','*','BH*',datestr(tc1,31),datestr(tc2,31),...
         'includePZ');
     
+    if length(dta) < 1
+        
+        corrseismograms(6*tele,:) = 0;
+    else 
+    
     % Displays when there is more than one location
     
     channellocations = [ ];
     chlocations = [ ];
     
-%     for loco=1:length(dta)
-%         
-%         channellocations{loco} = dta(loco).location;
-%         
-%         if length(channellocations) > 0
-%             
-%             chlocations = unique(channellocations);
-%             
-%         else
-%             
-%             chlocations = 0;
-%         end
-%         
-%     end
-%     
-%     if length(chlocations) > 1
-%         
-%         fprintf('%s\n', datestr(tc1,31))
-%         
-%     end
+    for loco=1:length(dta)
+        
+        channellocations{loco} = dta(loco).location;
+        
+        if length(channellocations) > 0
+            
+            chlocations = unique(channellocations);
+            
+        else
+            
+            chlocations = 0;
+        end
+        
+    end
+    
+    if length(chlocations) > 1
+        
+        location2{tele} = strtdate(tele);
+        
+    end
     
     % no data value to insert in gaps, for example NaN or -(2^31)
     nd1 = -(2^31);
@@ -130,7 +136,7 @@ for tele=1:4%length(strtdate)
         
     end
     
-  
+    end
     
 end
 
