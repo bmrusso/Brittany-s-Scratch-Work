@@ -3,14 +3,14 @@
 
 clc, clear all
 
+load Max_SRATE.mat
+
 strtdate = textread('OK_StartDates.txt', '%s', 'delimiter', ',');
 endate = textread('OK_EndDates.txt', '%s', 'delimiter', ',');
 
-uncorrseismograms=zeros(length(strtdate)*6,200*7197);
+uncorrseismograms=zeros(length(strtdate)*6,totmax*7197);
 corrseismograms=uncorrseismograms;
 time=uncorrseismograms;
-vecrate = [];
-location2 = [];
 
 for tele=1:length(strtdate)
     
@@ -29,26 +29,19 @@ for tele=1:length(strtdate)
         'includePZ');
     
     % Displays when there is more than one location
-    
     channellocations = [ ];
-    chlocations = [ ];
     
     for loco=1:length(dta)
         
         channellocations{loco} = dta(loco).location;
-        
-        if length(channellocations) > 0
-            chlocations = unique(channellocations);
-        else
-            chlocations = 0;
-        end
-        
     end
     
-    if length(chlocations) > 1
-        location2{tele} = strtdate(tele);
+    if length(channellocations) < 1
+        continue
     else
-        location2{tele} = 0;
+        index = strcmp(channellocations, channellocations(1));
+        moreindex = find(index == 0);
+        dta(moreindex) = [];
     end
     
     % no data value to insert in gaps, for example NaN or -(2^31)
@@ -77,7 +70,7 @@ for tele=1:length(strtdate)
     
     if length(dta) < 1
         
-        corrseismograms(6*tele,:) = 0;
+        continue
     else
         
         namevec = [];
@@ -129,7 +122,7 @@ for tele=1:length(strtdate)
             dta(numchan).sacpz.zeros=dta(numchan).sacpz.zeros(keepzer);
             
             corrgapzero=rm_instrum_resp(gapzero,-12345,dta(numchan).sampleRate,dta(numchan).sacpz.poles,...
-                dta(numchan).sacpz.zeros,.5,10,3,3,1/dta(numchan).sensitivity,dta(numchan).sensitivityFrequency,5,0);
+                dta(numchan).sacpz.zeros,.02,10,3,3,1/dta(numchan).sensitivity,dta(numchan).sensitivityFrequency,5,0);
             
             corrseismograms(6*tele-(6-numchan),1:length(corrgapzero)) = corrgapzero;
             
@@ -140,4 +133,4 @@ for tele=1:length(strtdate)
 end
 
 
-save('OK_Corr_Data.mat', 'location2', 'corrseismograms', 'channels')
+save('OK_Corr_Data.mat', 'corrseismograms', 'channels','-v7.3')
