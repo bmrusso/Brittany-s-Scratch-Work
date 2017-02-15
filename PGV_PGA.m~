@@ -34,16 +34,15 @@ for i=1:rows/6
     dv2 = diff(eq2);
     dv3 = diff(eq3);
     
-    dv = sqrt((dv1.^2) + (dv2.^2) + (dv3.^2));
+    toteq = sqrt((dv1.^2) + (dv2.^2) + (dv3.^2));
 
-    dvdt = dv/(1/totmax);
+    dvdt = dv./dt;
     
     % Determining the PGA
     a = max(dvdt);
-    PGA(i) = a;
+    PGA(i) = a*10000;
     
 end
-
 
 
 
