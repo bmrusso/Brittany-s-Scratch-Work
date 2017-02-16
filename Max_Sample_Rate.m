@@ -8,7 +8,7 @@ locvec = [ ];
 matrix2 = [];
 matrix3 = [];
 
-for tele=1:length(strtdate)
+for tele=57%:length(strtdate)
     
     strtvec = datevec(strtdate(tele));
     endvec = datevec(endate(tele));

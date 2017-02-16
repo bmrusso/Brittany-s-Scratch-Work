@@ -29,7 +29,7 @@ for i=1:rows/6
     v = max(toteq);
     PGV(i) = v;
     
-    % Differentiate the vector sum
+    % Differentiate 
     dv1 = diff(eq1);
     dv2 = diff(eq2);
     dv3 = diff(eq3);
@@ -45,5 +45,5 @@ for i=1:rows/6
 end
 
 
-
+save('peak_ground_data.mat', 'PGV', 'PGA')
 

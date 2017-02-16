@@ -10,7 +10,10 @@ clc, clear
 totbefore = [];
 totafter = [];
 totsubtract = [];
-
+lavec = [];
+lovec = [];
+magvec = [];
+    
 % Pulls all the magnitude 7 earthquakes in the world
 
 % Start years of all the zones 
@@ -24,7 +27,7 @@ load zone_data.mat
 
 for ii=1:length(zonelist)
     
-    [y,mo,d,h,mi,s,~,~,~,ma] = LoadComCat(datenum(zoneyears(ii), 1, 1), ...
+    [y,mo,d,h,mi,s,la,lo,~,ma] = LoadComCat(datenum(zoneyears(ii), 1, 1), ...
         datenum(2017, 1, 1), 7, [-90 90 -180 180]);
     
     % Loop to find the number of earthquakes before and after in a 7 day
@@ -32,7 +35,7 @@ for ii=1:length(zonelist)
     
     quakebefore = [];
     quakeafter = [];
-    
+  
     for i=1:length(y)
         
         m7date(i) = datenum(y(i), mo(i), d(i), h(i), mi(i), s(i));
@@ -59,12 +62,13 @@ for ii=1:length(zonelist)
         quakebefore = [quakebefore, numbf];
         
         quakeafter = [quakeafter, numaf];
-       
-    
         
     end
     
     %   Columns are teleseisms and rows are zones
+    lovec{ii} = lo;
+    lavec{ii} = la;
+    magvec{ii} = ma;
     
     totbefore{ii} = quakebefore;
     totafter{ii} = quakeafter;
