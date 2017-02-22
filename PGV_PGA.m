@@ -44,6 +44,11 @@ for i=1:rows/6
     
 end
 
+PGV(34) = [];
+PGA(34) = [];
+PGV(13) = [ ];
+PGA(13) = [ ];
 
-save('peak_ground_data.mat', 'PGV', 'PGA')
+save peak_ground_data.mat
+
 
