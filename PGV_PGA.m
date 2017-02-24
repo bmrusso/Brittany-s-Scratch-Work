@@ -49,6 +49,8 @@ PGA(34) = [];
 PGV(13) = [ ];
 PGA(13) = [ ];
 
+plot(PGA)
+
 save peak_ground_data.mat
 
 
