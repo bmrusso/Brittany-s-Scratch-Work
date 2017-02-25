@@ -10,6 +10,7 @@ load shaking_rate1_5.mat
 load shaking_rate3.mat
 load shaking_rate6.mat
 load shaking_rate15.mat
+load teleseism_distance.mat
 
 % Load all the teleseism data
 
@@ -86,12 +87,31 @@ csum6 = cumsum(totsubtract6);
 %Plotting the earthquakes
 
 figure(1)
-plot(csum1_5)
+hold on
+plot(m7date1_5, csum1_5)
+plot(m7date1_5, csum1_5,'x')
+datetick('x', 23)
+hold off
 
 figure(2)
-plot(csum3)
+hold on 
+plot(m7date3, csum3)
+plot(m7date3, csum3, 'x')
+datetick('x', 23)
+hold off
 
 figure(3)
-plot(csum6)
+hold on
+plot(m7date6, csum6)
+plot(m7date6, csum6, 'x')
+datetick('x', 23)
+hold off
 
+figure(4)
+hold on
+plot(m7date15, cumsum(totsubtract15))
+plot(m7date15, cumsum(totsubtract15),'x')
+datetick('x', 23)
+hold off
 
+save PGV_dc_data.mat

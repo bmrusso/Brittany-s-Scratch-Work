@@ -55,3 +55,5 @@ plot(kmlen(mag89)', PGA(mag89), 'or')
 plot(kmlen(mag910)', PGA(mag910), 'o', 'markerfacecolor', 'c')
 title('PGA vs Distance (km)')
 hold off
+
+save('teleseism_distance.mat', 'kmlen')

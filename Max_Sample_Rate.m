@@ -1,7 +1,31 @@
-clear 
+clc, clear 
 
-strtdate = textread('OK_StartDates.txt', '%s', 'delimiter', ',');
-endate = textread('OK_EndDates.txt', '%s', 'delimiter', ',');
+strtdatelist=textread('./Teleseism_StrDates/Strt_Names.txt','%s');
+enddatelist=textread('./Teleseism_EnDates/End_Names.txt','%s');
+
+fid = fopen(['./Teleseism_StrDates/' strtdatelist{1}]);
+srtdata = textscan(fid, '%s%s');
+fclose(fid)
+
+fid2 = fopen(['./Teleseism_EnDates/' enddatelist{1}]);
+endata = textscan(fid2, '%s%s');
+fclose(fid2)
+
+srtdata1 = num2str(cell2mat(srtdata{1}));
+srtdata2 = cell2mat(srtdata{2});
+
+enddata1 = num2str(cell2mat(endata{1}));
+enddata2 = cell2mat(endata{2});
+
+junk1 = [];
+junk2 = [];
+
+for i=1:length(srtdata{1})
+    
+    junk1 = [junk1;srtdata1(i,:), ' ', srtdata2(i,:)];
+    junk2 = [junk2;enddata1(i,:), ' ', enddata2(i,:)];
+    
+end
 
 vecrate = [];
 locvec = [ ];
@@ -10,8 +34,8 @@ matrix3 = [];
 
 for tele=57%:length(strtdate)
     
-    strtvec = datevec(strtdate(tele));
-    endvec = datevec(endate(tele));
+    strtvec = datevec(junk1(tele));
+    endvec = datevec(junk2(tele));
     
 %     beginning and end times for window of interest
     t1 = cal2sec(strtvec);
