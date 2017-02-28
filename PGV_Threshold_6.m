@@ -89,9 +89,6 @@ index6 = find(PGV >= threshold);
     
     csum = cumsum(totsubtract6);
     
-    hold on
-    figure(5)
-    plot(m7date, csum)
-%     plot(m7date, csum, 'x')
+   
 
 save('shaking_rate6.mat', 'quakebefore6', 'quakeafter6', 'totsubtract6', 'index6') 

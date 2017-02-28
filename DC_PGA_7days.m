@@ -100,3 +100,4 @@ stem(m7date6(13), ma6(13), 'y--')
 stem(m7date6(14), ma6(14), 'y--')
 hold off
 
+save PGA_dc_data.mat

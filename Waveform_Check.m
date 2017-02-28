@@ -4,7 +4,7 @@ load OK_Corr_Data.mat
 
 [rows, col] = size(corrseismograms);
 
-for i=108
+for i=183
     
     eq1 = corrseismograms(i*6-5,:);
     eq2 = corrseismograms(i*6-4,:);

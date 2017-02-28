@@ -6,7 +6,6 @@ enddatelist=textread('./Teleseism_EnDates/End_Names.txt','%s');
 maxvector = zeros(length(strtdatelist), 1);
 
 for ii=1:length(strtdatelist)
-    
     fid = fopen(['./Teleseism_StrDates/' strtdatelist{ii}]);
     srtdata = textscan(fid, '%s%s');
     fclose(fid)
@@ -36,7 +35,7 @@ for ii=1:length(strtdatelist)
     matrix2 = [];
     matrix3 = [];
     
-    for tele=1:length(junk1)
+    for tele=1:2%length(junk1)
         
         strtvec = datevec(junk1(tele,:));
         endvec = datevec(junk2(tele,:));

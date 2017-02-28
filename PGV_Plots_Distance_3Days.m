@@ -1,4 +1,3 @@
-
 clc, clear 
 
 load teleseism_distance.mat
@@ -6,7 +5,7 @@ load shaking_rate1_5.mat
 load shaking_rate3.mat
 load shaking_rate6.mat
 load shaking_rate15.mat
-load PGV_dc_data.mat
+load PGV_dc_data_3days.mat
 load month_count.mat
 
 csum15 = cumsum(totsubtract15);
@@ -55,7 +54,6 @@ index15_15 = find(kmlen15 >= 15000 & kmlen15 < 17000);
 figure(1)
 hold on
 yyaxis left
-ylim([0 max(csum1_5)])
 plot(m7date1_5, csum1_5)
 plot(m7date1_5(index1_1_5), csum1_5(index1_1_5),'rx')
 plot(m7date1_5(index3_1_5), csum1_5(index3_1_5),'y*')
@@ -74,7 +72,6 @@ hold off
 figure(2)
 hold on 
 yyaxis left
-ylim([0 max(csum3)])
 plot(m7date3, csum3)
 plot(m7date3(index1_3), csum3(index1_3),'rx')
 plot(m7date3(index3_3), csum3(index3_3),'y*')
@@ -92,8 +89,7 @@ hold off
 
 figure(3)
 hold on
-yyaxis left
-ylim([0 max(csum6)])
+yyaxis left 
 plot(m7date6, csum6)
 plot(m7date6(index1_6), csum6(index1_6),'rx')
 plot(m7date6(index3_6), csum6(index3_6),'y*')
@@ -112,7 +108,6 @@ hold off
 figure(4)
 hold on
 yyaxis left 
-ylim([0 max(csum15)])
 plot(m7date15, csum15)
 plot(m7date15(index1_15), csum15(index1_15),'rx')
 plot(m7date15(index3_15), csum15(index3_15),'y*')

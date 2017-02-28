@@ -107,3 +107,5 @@ stem(m7date3(ratebef)-3, ma3(ratebef), 'm-')
 % stem(m7date3(39), ma3(39), 'y--')
 % stem(m7date3(40), ma3(40), 'y--')
 hold off
+
+save PGV_dc_data_3days.mat
