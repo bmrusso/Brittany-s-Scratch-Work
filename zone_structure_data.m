@@ -3,6 +3,12 @@
 strtdatelist=textread('./Teleseism_StrDates/Strt_Names.txt','%s');
 enddatelist=textread('./Teleseism_EnDates/End_Names.txt','%s');
 
+stationnames = {'BRAL', 'WMOK', 'MNTX', 'JCT', 'MIAR', 'ISCO', 'NATX', ...
+    'WMOK', 'MVCO', 'SDCO', 'WMOK', 'NATX', 'ERPA'};
+
+alldata=[];
+
+for ii=1:length(stationnames)
     
     fid = fopen(['./Teleseism_StrDates/' strtdatelist{ii}]);
     srtdata = textscan(fid, '%s%s');
@@ -28,6 +34,8 @@ enddatelist=textread('./Teleseism_EnDates/End_Names.txt','%s');
         
     end
     
+    zonedata = [ ];
+    
     for tele=1:length(junk1)
         
         strtvec = datevec(junk1(tele,:));
@@ -40,47 +48,16 @@ enddatelist=textread('./Teleseism_EnDates/End_Names.txt','%s');
         %     get some gappy data using irisFetch
         tc1 = sec2cal(t1);
         tc2 = sec2cal(t2);
-
-dta_brewt = irisFetch.Traces('US','BRAL','*','BH*',datestr(tc1,31),datestr(tc2,31),...
-    'includePZ');
-
+        
+        dta = irisFetch.Traces('US',stationnames(ii),'*','BH*',datestr(tc1,31),datestr(tc2,31),...
+            'includePZ');  
+        
+        zonedata{tele} = dta;
+        
     end
-
-dta_cog = irisFetch.Traces('US','WMOK','*','BH*',datestr(tc1,31),datestr(tc2,31),...
-    'includePZ');
-
-dta_dagger = irisFetch.Traces('US','MNTX','*','BH*',datestr(tc1,31),datestr(tc2,31),...
-    'includePZ');
-
-dta_fash = irisFetch.Traces('US','JCT','*','BH*',datestr(tc1,31),datestr(tc2,31),...
-    'includePZ');
-
-dta_ncark = irisFetch.Traces('US','MIAR','*','BH*',datestr(tc1,31),datestr(tc2,31),...
-    'includePZ');
-
-dta_greeley = irisFetch.Traces('US','ISCO','*','BH*',datestr(tc1,31),datestr(tc2,31),...
-    'includePZ');
-
-dta_irving = irisFetch.Traces('US','NATX','*','BH*',datestr(tc1,31),datestr(tc2,31),...
-    'includePZ');
-
-dta_ntx = dta_irving;
-
-dta_okks = dta_cog;
-
-dta_paradox = irisFetch.Traces('US','MVCO','*','BH*',datestr(tc1,31),datestr(tc2,31),...
-    'includePZ');
-
-dta_raton = irisFetch.Traces('US','SDCO','*','BH*',datestr(tc1,31),datestr(tc2,31),...
-    'includePZ');
-
-dta_suncity = dta_cog;
-
-dta_timp = dta_irving;
-
-dta_venus = dta_irving;
-
-dta_youngs = irisFetch.Traces('US','ERPA','*','BH*',datestr(tc1,31),datestr(tc2,31),...
-    'includePZ');
+    
+    alldata{ii} = zonedata;
+    
+end
 
 save zone_structures.mat
