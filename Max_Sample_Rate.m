@@ -11,7 +11,9 @@ for ii=1:length(alldata)
     
     for i=1:length(alldata{ii})
         
-        ratemat = cell2mat({dta.sampleRate});
+        strct = alldata{ii}{i};
+        
+        ratemat = cell2mat({strct.sampleRate});
         
         ratemax = max(ratemat);
         

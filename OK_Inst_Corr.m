@@ -4,6 +4,7 @@
 clc, clear all
 
 load Max_SRATE.mat
+load zone_structures.mat
 
 strtdate = textread('OK_StartDates.txt', '%s', 'delimiter', ',');
 endate = textread('OK_EndDates.txt', '%s', 'delimiter', ',');
