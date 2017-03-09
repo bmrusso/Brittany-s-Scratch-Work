@@ -1,8 +1,8 @@
 % Calculating the PGV and PGA of the teleseisms. 
 
-clc, clear
+clc, clearvars -EXCEPT PGV_total PGA_total
 
-load OK_Corr_Data.mat
+load Youngs_Corr.mat
 load MAX_SRATE.mat
 
 % Pre-allocating memory
@@ -36,7 +36,7 @@ for i=1:rows/6
     
     dv = sqrt((dv1.^2) + (dv2.^2) + (dv3.^2));
 
-    dvdt = dv/(1/totmax);
+    dvdt = dv/(1/maxvector(1));
     
     % Determining the PGA
     a = max(dvdt);
@@ -44,12 +44,6 @@ for i=1:rows/6
     
 end
 
-PGV(34) = [];
-PGA(34) = [];
-PGV(13) = [ ];
-PGA(13) = [ ];
-
-plot(PGA)
 
 save peak_ground_data.mat
 

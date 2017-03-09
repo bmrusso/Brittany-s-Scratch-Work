@@ -4,24 +4,21 @@
 clc, clear all
 
 load Max_SRATE.mat
-load zone_structures.mat
+load paradox_struct.mat
 
 strtdatelist=textread('./Teleseism_StrDates/Strt_Names.txt','%s');
 enddatelist=textread('./Teleseism_EnDates/End_Names.txt','%s');
-
-
-for i=1:length(alldata)
     
-    uncorrseismograms=zeros(length(alldata{i})*6,maxvector(i)*7197);
+    uncorrseismograms=zeros(length(paradox_data)*6,maxvector(9)*7197);
     corrseismograms=uncorrseismograms;
     
-        fid = fopen(['./Teleseism_StrDates/' strtdatelist{i}]);
+    fid = fopen(['./Teleseism_StrDates/' strtdatelist{9}]);
     srtdata = textscan(fid, '%s%s');
-    fclose(fid)
+    fclose(fid);
     
-    fid = fopen(['./Teleseism_EnDates/' enddatelist{i}]);
+    fid = fopen(['./Teleseism_EnDates/' enddatelist{9}]);
     enddata = textscan(fid, '%s%s');
-    fclose(fid)
+    fclose(fid);
     
     srtdata1 = num2str(cell2mat(srtdata{1}));
     srtdata2 = cell2mat(srtdata{2});
@@ -33,9 +30,9 @@ for i=1:length(alldata)
     junk2 = [];
     zonedata = [];
     
-    for ii=1:length(alldata{i})
+    for ii=1:length(paradox_data)
         
-        dta = alldata{i}{ii};
+        dta = paradox_data{ii};
         
         junk1 = [junk1;srtdata1(ii,:), ' ', srtdata2(ii,:)];
         junk2 = [junk2;enddata1(ii,:), ' ', enddata2(ii,:)];
@@ -154,10 +151,5 @@ for i=1:length(alldata)
         end
         
     end
-    
-    corr_data{i} = corrseismograms;
-    channellist{i} = channels;
-    
-end
+  
 
-save('Corr_Data.mat', 'corr_data', 'channellist','-v7.3')

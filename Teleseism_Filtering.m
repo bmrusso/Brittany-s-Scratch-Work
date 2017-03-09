@@ -1,26 +1,46 @@
-% Identifying local earthquakes by high passing the data of teleseisms 
+% Identifying local earthquakes by high passing the data of teleseisms
 
-clc, clear
+clc, clearvars -EXCEPT localeq_dates
+
+load MAX_SRATE.mat
+load filtered_data.mat
 
 [year,month,day,hour,mi,sec] = LoadComCat(datenum(2008, 1, 1), ...
-        datenum(2017, 1, 1), 7, [-90 90 -180 180]);
+    datenum(2017, 1, 1), 7, [-90 90 -180 180]);
 
-for i=1:length(year)
+datevector = datenum(year, month, day, hour, mi, sec);
     
-    datevector = datenum(year(i), month(i), day(i), hour(i), mi(i), sec(i));
-    
-    date_end = addtodate(datevector, 3, 'hour');
-    
-    phc = irisFetch.Traces('TA','T25A','*','BH?',datestr(datevector, 31),...
-        datestr(date_end, 31));
+date_end = addtodate(datevector(90), 3, 'hour');
+
+phc = irisFetch.Traces('TA','T25A','*','BH?',datestr(datevector(90), 31),...
+    datestr(date_end, 31));
+
+if length(phc) > 0
     
     for ii=1:3
-        figure(i)
+        
         subplot(6,1,ii)
         plot(phc(ii).data)
         f{ii} = hp(phc(ii).data, phc(ii).sampleRate,5);
         subplot(6,1,ii+3)
         plot(f{ii})
     end
+    
 end
+
+% gin_data = ginput;
+% 
+% num_sec = round(gin_data(:,1)/40);
+% 
+% local_dates = zeros(length(num_sec), 1);
+% 
+% for i=1:length(num_sec)
+%     
+%     local_time = addtodate(datevector(90), num_sec(i), 'second');
+%     
+%     local_dates(i,:) = local_time;
+%     
+% end
+% 
+% localeq = datestr(local_dates);
 

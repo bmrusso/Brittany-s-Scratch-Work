@@ -4,4 +4,5 @@ function newsig=hp(signal,samprate,cutofffreq);
 %frequency
 
 [b,a]=butter(4,cutofffreq/2/samprate,'high');
+signal=detrend(signal);
 newsig=filter(b,a,signal);
