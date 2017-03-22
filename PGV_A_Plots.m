@@ -3,7 +3,7 @@ clc, clear
 
 load num_eq_data.mat
 load peak_ground_data.mat
-load Paradox_struct.mat
+load Fash_struct.mat
 
 % magvec{9}(34) = [ ];
 % magvec{9}(13) = [ ];
@@ -42,13 +42,13 @@ lovec(8) = [ ];
   % Plotting the distance from the station to the teleseism by the peak 
    %ground velocity and the peak ground acceleration
    
-    figure(1)
-    plot(kmlen', PGV_total{4}, 'o', 'markerfacecolor', 'b')
-    title('PGV vs Distance (km)')
-    
-    figure(2)
-    plot(kmlen', PGA_total{4}, 'd', 'markerfacecolor', 'b')
-    title('PGA vs Distance (km)')
+%     figure(1)
+%     plot(kmlen', PGV_total{4}, 'o', 'markerfacecolor', 'b')
+%     title('PGV vs Distance (km)')
+%     
+%     figure(2)
+%     plot(kmlen', PGA_total{4}, 'd', 'markerfacecolor', 'b')
+%     title('PGA vs Distance (km)')
     
 
     

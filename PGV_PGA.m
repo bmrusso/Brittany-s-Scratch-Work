@@ -45,6 +45,6 @@ for i=1:rows/6
 end
 
 
-save peak_ground_data.mat
+
 
 

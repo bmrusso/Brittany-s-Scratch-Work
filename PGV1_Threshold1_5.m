@@ -1,4 +1,4 @@
-% Picks earthquakes that meet a specific threshold for the degree os ground
+% Picks earthquakes that meet a specific threshold for the degree of ground
 % shaking and then counts the number of earthquakes before and after to
 % show the rate of the occurance of earthquakes before or after a
 % teleseism.

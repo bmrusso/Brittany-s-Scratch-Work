@@ -2,11 +2,11 @@
 
 clc, clear
 
-load Raton_Corr.mat
+load Fash_Corr.mat
 
 [rows, col] = size(corrseismograms);
 
-for i=223
+for i=576
    
     eq1 = corrseismograms(i*6-5,:);
     eq2 = corrseismograms(i*6-4,:);

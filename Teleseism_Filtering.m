@@ -3,16 +3,15 @@
 clc, clearvars -EXCEPT localeq_dates
 
 load MAX_SRATE.mat
-load filtered_data.mat
 
 [year,month,day,hour,mi,sec] = LoadComCat(datenum(2008, 1, 1), ...
     datenum(2017, 1, 1), 7, [-90 90 -180 180]);
 
 datevector = datenum(year, month, day, hour, mi, sec);
     
-date_end = addtodate(datevector(90), 3, 'hour');
+date_end = addtodate(datevector(121), 3, 'hour');
 
-phc = irisFetch.Traces('TA','T25A','*','BH?',datestr(datevector(90), 31),...
+phc = irisFetch.Traces('TA','T25A','*','BH?',datestr(datevector(121), 31),...
     datestr(date_end, 31));
 
 if length(phc) > 0
@@ -27,7 +26,7 @@ if length(phc) > 0
     end
     
 end
-
+% 
 % gin_data = ginput;
 % 
 % num_sec = round(gin_data(:,1)/40);
@@ -36,7 +35,7 @@ end
 % 
 % for i=1:length(num_sec)
 %     
-%     local_time = addtodate(datevector(90), num_sec(i), 'second');
+%     local_time = addtodate(datevector(121), num_sec(i), 'second');
 %     
 %     local_dates(i,:) = local_time;
 %     
