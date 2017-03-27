@@ -1,4 +1,4 @@
-% Oklahoma Kansas theoretical earthquake rate graph
+% Raton theoretical earthquake rate graph
 % Using the rand function to randomly generate when teleseisms occur to
 % create a graph to see if it matches the actual one that we produced using
 % actual USGS earthquake data.
@@ -13,10 +13,10 @@ zonelist=textread('./POLYGONS_2016/TOANALYZE/allregs','%s');
 
 % Loops over all the zones and stores the data into variables
 
-zonebound=load(['./POLYGONS_2016/TOANALYZE/', zonelist{9}]);
+zonebound=load(['./POLYGONS_2016/TOANALYZE/', zonelist{11}]);
 
 [year, month, day, hour, mnte, sec, lat, long, ~, magn] = LoadComCat(...
-    datenum(2006, 1, 1), datenum(2017, 1, 1), 3, [min(zonebound(:,2)) ...
+    datenum(2001, 1, 1), datenum(2017, 1, 1), 3, [min(zonebound(:,2)) ...
     max(zonebound(:,2)) min(zonebound(:,1)) max(zonebound(:,1))]);
 
 IN = inpolygon(lat, long, zonebound(:,2), zonebound(:,1));
@@ -44,11 +44,11 @@ totafter = [ ];
 
 for i=1:1000
     
-    numrand = rand([1, 184]);
+    numrand = rand([1, 255]);
     
     % Converting decimels into usable dates
     
-    randdate = 2006+(11*numrand);
+    randdate = 2001+(11*numrand);
     
     % Converting into Julian Time
     
@@ -64,7 +64,7 @@ for i=1:1000
     % Looping to count the number of earthquakes before and after a
     % teleseism
     
-    for ii=1:184
+    for ii=1:255
         
         endweek = length(find(zonedate <= telesdate(ii) & zonedate > ...
             (telesdate(ii) - 7)));
@@ -95,15 +95,9 @@ teles(posindex) = 1;
 
 figure 
 
-%  hold on    
     hold on
     plot(dateteles(1,:), sum(cumsum(teles)))
     datetick('x', 1)
     hold off
-
-% x = [diff(quakebefore), ' '];
-
-% plot(dateteles(1,:), x)
-
-% hold off
-
+    
+    

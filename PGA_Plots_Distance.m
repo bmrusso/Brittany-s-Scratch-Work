@@ -58,7 +58,7 @@ plot(m7date19(index11_19), csum19(index11_19),'mx')
 plot(m7date19(index13_19), csum19(index13_19),'kx')
 plot(m7date19(index15_19), csum19(index15_19),'r*')
 yyaxis right
-plot(datevector, totalcount)
+plot(monthly_data{1}{2}, monthly_data{1}{1})
 datetick('x', 23)
 title('PGA - Threshold 0.19x10^-^3')
 hold off
@@ -76,7 +76,7 @@ plot(m7date6(index11_6), csum6(index11_6),'mx')
 plot(m7date6(index13_6), csum6(index13_6),'kx')
 plot(m7date6(index15_6), csum6(index15_6),'r*')
 yyaxis right
-plot(datevector, totalcount) 
+plot(monthly_data{1}{2}, monthly_data{1}{1}) 
 datetick('x', 23)
 title('PGA - Threshold 0.6x10^-^3')
 hold off
@@ -94,7 +94,7 @@ plot(m7date15(index11_15), csum15(index11_15),'mx')
 plot(m7date15(index13_15), csum15(index13_15),'kx')
 plot(m7date15(index15_15), csum15(index15_15),'r*')
 yyaxis right
-plot(datevector, totalcount)
+plot(monthly_data{1}{2}, monthly_data{1}{1})
 datetick('x', 23)
 title('PGA - Threshold 1.5x10^-^3')
 hold off

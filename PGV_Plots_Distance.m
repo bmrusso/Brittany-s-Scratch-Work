@@ -66,7 +66,7 @@ plot(m7date1_5(index11_1_5), csum1_5(index11_1_5),'m*')
 plot(m7date1_5(index13_1_5), csum1_5(index13_1_5),'kx')
 plot(m7date1_5(index15_1_5), csum1_5(index15_1_5),'r*')
 yyaxis right
-plot(datevector, totalcount)
+plot(monthly_data{1}{2}, monthly_data{1}{1})
 datetick('x', 23)
 title('PGV - Threshold 0.15x10^-^3')
 hold off
@@ -85,7 +85,7 @@ plot(m7date3(index11_3), csum3(index11_3),'m*')
 plot(m7date3(index13_3), csum3(index13_3),'kx')
 plot(m7date3(index15_3), csum3(index15_3),'r*')
 yyaxis right
-plot(datevector, totalcount)
+plot(monthly_data{1}{2}, monthly_data{1}{1})
 datetick('x', 23)
 title('PGV - Threshold 0.3x10^-^3')
 hold off
@@ -104,7 +104,7 @@ plot(m7date6(index11_6), csum6(index11_6),'m*')
 plot(m7date6(index13_6), csum6(index13_6),'kx')
 plot(m7date6(index15_6), csum6(index15_6),'r*')
 yyaxis right
-plot(datevector, totalcount)
+plot(monthly_data{1}{2}, monthly_data{1}{1})
 datetick('x', 23)
 title('PGV - Threshold 0.6x10^-^3')
 hold off
@@ -123,7 +123,7 @@ plot(m7date15(index11_15), csum15(index11_15),'m*')
 plot(m7date15(index13_15), csum15(index13_15),'kx')
 plot(m7date15(index15_15), csum15(index15_15),'r*')
 yyaxis right
-plot(datevector, totalcount)
+plot(monthly_data{1}{2}, monthly_data{1}{1})
 datetick('x', 23)
 title('PGV - Threshold 1.5x10^-^3')
 hold off

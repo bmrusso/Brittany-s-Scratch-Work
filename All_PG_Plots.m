@@ -641,6 +641,16 @@ kmlen13 = kmlen;
 % title('PGA vs Distance (km)-Youngs')
 
 %% Plotting on one graph 
+
+v_t1 = [0.0028, 0.0028];
+v_t2 = [0.0014, 0.0014];
+v_t3 = [0.00020, 0.00020];
+dist_value = [0, 20000];
+
+a_t1 = [0.0024, 0.0024];
+a_t2 = [0.0010, 0.0010];
+a_t3 = [0.00045, 0.00045];
+
 figure(1)
 hold on
 plot(kmlen1, PGV_total{1}, 'o', 'markerfacecolor', 'b')
@@ -655,7 +665,12 @@ plot(kmlen10, PGV_total{10}, 'o', 'markerfacecolor', 'b')
 plot(kmlen11, PGV_total{11}, 'o', 'markerfacecolor', 'b')
 plot(kmlen12, PGV_total{12}, 'o', 'markerfacecolor', 'b')
 plot(kmlen13, PGV_total{13}, 'o', 'markerfacecolor', 'b')
+plot(dist_value, v_t1, 'k--')
+plot(dist_value, v_t2, 'k--')
+plot(dist_value, v_t3, 'k--')
 title('PGV')
+xlabel('Distance (km)')
+ylabel('Peak Ground Velocity')
 hold off
 
 figure(2)
@@ -672,5 +687,10 @@ plot(kmlen10, PGA_total{10}, 'o', 'markerfacecolor', 'r')
 plot(kmlen11, PGA_total{11}, 'o', 'markerfacecolor', 'r')
 plot(kmlen12, PGA_total{12}, 'o', 'markerfacecolor', 'r')
 plot(kmlen13, PGA_total{13}, 'o', 'markerfacecolor', 'r')
+plot(dist_value, a_t1, 'k--')
+plot(dist_value, a_t2, 'k--')
+plot(dist_value, a_t3, 'k--')
 title('PGA')
+xlabel('Distance (km)')
+ylabel('Peak Ground Acceleration')
 hold off

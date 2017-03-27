@@ -64,19 +64,11 @@ load Raton_Corr.mat
      
      v_localeq = localeq_dates;
      
-    v_index = find(PGV_total{10} >= v_threshold(i));
+    v_index = find(PGA_total{10} >= v_threshold(i));
     PGV_localeq{i} = v_localeq(v_index);
     PGV_index{i} = v_index;
  
  end
  
- for i=1:length(a_threshold)
-     
-     a_localeq = localeq_dates;
-     
-     a_index = find(PGA_total{10} >= a_threshold(i));
-     PGA_localeq{i} = a_localeq(a_index);
-     PGA_index{i} = v_index;
-     
- end
+ for i=1:length(a_
  

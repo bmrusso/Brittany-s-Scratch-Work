@@ -215,9 +215,13 @@ all_subtract{3}{11}(3) = 0;
 
 for ii=1:3
     
+    c_sum = [ ];
+    date_vec = [ ];
+    
     for i=1:length(all_subtract{ii})
         
         csum = cumsum(all_subtract{ii}{i});
+        c_sum{i} = csum;
         
         y = year_cell{i}(all_index{ii}{i});
         mo = month_cell{i}(all_index{ii}{i});
@@ -230,15 +234,170 @@ for ii=1:3
         ma = mag_cell{i}(all_index{ii}{i});
         
         date_plot = datenum(y, mo, d, h, mi, s);
-        
-        figure(ii)
-        subplot(3,5,i)
-        hold on 
-        plot(date_plot, csum)
-        plot(date_plot, csum, '*')
-        datetick('x',2)
+        date_vec{i} = date_plot;
         
     end
+    
+    sum_cell{ii} = c_sum;
+    date_cell{ii} = date_vec;
 end
-% 
-% % save('shaking_dc_ones.mat', 'all_subtract')
+
+for ii=1:3
+    
+figure(ii)
+
+subplot(3,5,1)
+hold on 
+ylim([-1 1])
+title('Brewton')
+plot(date_cell{ii}{1}, sum_cell{ii}{1})
+plot(date_cell{ii}{1}, sum_cell{ii}{1}, '*')
+xlabel('Date')
+ylabel('Cumulative Sum')
+datetick('x', 2)
+hold off
+
+subplot(3,5,2)
+hold on
+ylim([-1 1])
+title('Cogdell')
+plot(date_cell{ii}{2}, sum_cell{ii}{2})
+plot(date_cell{ii}{2}, sum_cell{ii}{2}, '*')
+xlabel('Date')
+ylabel('Cumulative Sum')
+datetick('x', 2)
+hold off
+
+subplot(3,5,3)
+hold on 
+ylim([-1 1])
+title('Dagger')
+plot(date_cell{ii}{3}, sum_cell{ii}{3})
+plot(date_cell{ii}{3}, sum_cell{ii}{3}, '*')
+xlabel('Date')
+ylabel('Cumulative Sum')
+datetick('x', 2)
+hold off
+
+subplot(3,5,4)
+hold on
+ylim([-1 1])
+title('Fash')
+plot(date_cell{ii}{4}, sum_cell{ii}{4})
+plot(date_cell{ii}{4}, sum_cell{ii}{4}, '*')
+xlabel('Date')
+ylabel('Cumulative Sum')
+datetick('x', 2)
+hold off
+
+subplot(3,5,5)
+hold on 
+ylim([-1 1])
+title('NCent Ark')
+plot(date_cell{ii}{5}, sum_cell{ii}{5})
+plot(date_cell{ii}{5}, sum_cell{ii}{5}, '*')
+xlabel('Date')
+ylabel('Cumulative Sum')
+datetick('x', 2)
+hold on 
+
+subplot(3,5,6)
+hold on 
+ylim([-1 1])
+title('Greeley')
+plot(date_cell{ii}{6}, sum_cell{ii}{6})
+plot(date_cell{ii}{6}, sum_cell{ii}{6}, '*')
+xlabel('Date')
+ylabel('Cumulative Sum')
+datetick('x', 2)
+hold off
+
+subplot(3,5,7)
+hold on 
+ylim([-1 1])
+title('Irving')
+plot(date_cell{ii}{7}, sum_cell{ii}{7})
+plot(date_cell{ii}{7}, sum_cell{ii}{7}, '*')
+xlabel('Date')
+ylabel('Cumulative Sum')
+datetick('x', 2)
+hold off
+
+subplot(3,5,8)
+hold on
+ylim([-1 1])
+title('NTX')
+plot(date_cell{ii}{8}, sum_cell{ii}{8})
+plot(date_cell{ii}{8}, sum_cell{ii}{8}, '*')
+xlabel('Date')
+ylabel('Cumulative Sum')
+datetick('x', 2)
+hold off
+
+subplot(3,5,9)
+hold on
+ylim([-4 4])
+title('OKKS')
+plot(date_cell{ii}{9}, sum_cell{ii}{9})
+plot(date_cell{ii}{9}, sum_cell{ii}{9}, '*')
+xlabel('Date')
+ylabel('Cumulative Sum')
+datetick('x', 2)
+hold off
+
+subplot(3,5,10)
+hold on 
+ylim([-3 3])
+title('Raton')
+plot(date_cell{ii}{10}, sum_cell{ii}{10})
+plot(date_cell{ii}{10}, sum_cell{ii}{10}, '*')
+xlabel('Date')
+ylabel('Cumulative Sum')
+datetick('x', 2)
+hold off
+
+subplot(3,5,11)
+hold on
+ylim([-2 2])
+title('SunCity')
+plot(date_cell{ii}{11}, sum_cell{ii}{11})
+plot(date_cell{ii}{11}, sum_cell{ii}{11}, '*')
+xlabel('Date')
+ylabel('Cumulative Sum')
+datetick('x', 2)
+hold off
+
+subplot(3,5,12)
+hold on
+ ylim([-1 1])
+title('Timp')
+plot(date_cell{ii}{12}, sum_cell{ii}{12})
+plot(date_cell{ii}{12}, sum_cell{ii}{12}, '*')
+xlabel('Date')
+ylabel('Cumulative Sum')
+datetick('x', 2)
+hold off
+
+subplot(3,5,13)
+hold on 
+ylim([-1 1])
+title('Venus')
+plot(date_cell{ii}{13}, sum_cell{ii}{13})
+plot(date_cell{ii}{13}, sum_cell{ii}{13}, '*')
+xlabel('Date')
+ylabel('Cumulative Sum')
+datetick('x', 2)
+hold off
+
+subplot(3,5,14)
+hold on 
+ylim([-1 1])
+title('Youngs')
+plot(date_cell{ii}{14}, sum_cell{ii}{14})
+plot(date_cell{ii}{14}, sum_cell{ii}{14}, '*')
+xlabel('Date')
+ylabel('Cumulative Sum')
+datetick('x', 2)
+hold off
+
+end
