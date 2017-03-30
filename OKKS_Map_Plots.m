@@ -1,4 +1,5 @@
-% Plotting maps for Oklahoma-Kansas
+% Plotting maps for Oklahoma-Kansas of the magnitude 5 earthquakes with all
+% induced earthquakes.
 
 % ----------------------------------------------------------------------
 
@@ -7,6 +8,8 @@ clc, clear
 load zone_data.mat
 
 deglimit = km2deg(500);
+
+% Loads all induced earthquakes within a specific region
 
 [y,mo,d,h,mi,s,la,lo,~,ma] = LoadComCat(datenum(2006, 1, 1), ...
     datenum(2017, 1, 1), 5, [25 45 -125 -70]);

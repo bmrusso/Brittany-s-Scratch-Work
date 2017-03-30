@@ -48,35 +48,35 @@ load Raton_Corr.mat
 % 
 % localeq = datestr(local_dates);
 
-%% Using EQ Above Threshold 
+%% Using EQ Above Threshold
 
- [year,month,day,hour,mi,sec] = LoadComCat(datenum(2001, 1, 1), ...
-     datenum(2017, 1, 1), 7, [-90 90 -180 180]);
- 
- num_index = find(year < 2008);
- PGA_total{10}(num_index) = [ ];
- PGV_total{10}(num_index) = [ ];
- 
- v_threshold = [0.0028, 0.0014, 0.00020];
- a_threshold = [0.0024, 0.0010, 0.00045];
- 
- for i=1:length(v_threshold)
-     
-     v_localeq = localeq_dates;
-     
+[year,month,day,hour,mi,sec] = LoadComCat(datenum(2001, 1, 1), ...
+    datenum(2017, 1, 1), 7, [-90 90 -180 180]);
+
+num_index = find(year < 2008);
+PGA_total{10}(num_index) = [ ];
+PGV_total{10}(num_index) = [ ];
+
+v_threshold = [0.0028, 0.0014, 0.00020];
+a_threshold = [0.0024, 0.0010, 0.00045];
+
+for i=1:length(v_threshold)
+    
+    v_localeq = localeq_dates;
+    
     v_index = find(PGV_total{10} >= v_threshold(i));
     PGV_localeq{i} = v_localeq(v_index);
     PGV_index{i} = v_index;
- 
- end
- 
- for i=1:length(a_threshold)
-     
-     a_localeq = localeq_dates;
-     
-     a_index = find(PGA_total{10} >= a_threshold(i));
-     PGA_localeq{i} = a_localeq(a_index);
-     PGA_index{i} = v_index;
-     
- end
+    
+end
+
+for i=1:length(a_threshold)
+    
+    a_localeq = localeq_dates;
+    
+    a_index = find(PGA_total{10} >= a_threshold(i));
+    PGA_localeq{i} = a_localeq(a_index);
+    PGA_index{i} = v_index;
+    
+end
  

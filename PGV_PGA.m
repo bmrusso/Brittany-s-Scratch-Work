@@ -1,5 +1,7 @@
 % Calculating the PGV and PGA of the teleseisms. 
 
+% ----------------------------------------------------------------------
+
 clc, clearvars -EXCEPT PGV_total PGA_total
 
 load Youngs_Corr.mat
@@ -44,7 +46,7 @@ for i=1:rows/6
     
 end
 
-
+% -----------------------------------------------------------------------
 
 
 

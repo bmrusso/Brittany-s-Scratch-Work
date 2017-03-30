@@ -1,6 +1,8 @@
 % Loading all the zones and creating a PGV and PGA vs distance plot for
 % every zone
 
+% ----------------------------------------------------------------------
+
 clc, clear
 
 load num_eq_data.mat
@@ -653,44 +655,50 @@ a_t3 = [0.00045, 0.00045];
 
 figure(1)
 hold on
-plot(kmlen1, PGV_total{1}, 'o', 'markerfacecolor', 'b')
-plot(kmlen2, PGV_total{2}, 'o', 'markerfacecolor', 'b')
-plot(kmlen3, PGV_total{3}, 'o', 'markerfacecolor', 'b')
-plot(kmlen4, PGV_total{4}, 'o', 'markerfacecolor', 'b')
-plot(kmlen5, PGV_total{5}, 'o', 'markerfacecolor', 'b')
-plot(kmlen6, PGV_total{6}, 'o', 'markerfacecolor', 'b')
-plot(kmlen7, PGV_total{7}, 'o', 'markerfacecolor', 'b')
-plot(kmlen8, PGV_total{8}, 'o', 'markerfacecolor', 'b')
-plot(kmlen10, PGV_total{10}, 'o', 'markerfacecolor', 'b')
-plot(kmlen11, PGV_total{11}, 'o', 'markerfacecolor', 'b')
-plot(kmlen12, PGV_total{12}, 'o', 'markerfacecolor', 'b')
-plot(kmlen13, PGV_total{13}, 'o', 'markerfacecolor', 'b')
+plot(kmlen1, PGV_total{1}, 'o', 'markerfacecolor', 'w')
+plot(kmlen2, PGV_total{2}, 'o', 'markerfacecolor', 'w')
+plot(kmlen3, PGV_total{3}, 'o', 'markerfacecolor', 'w')
+plot(kmlen4, PGV_total{4}, 'o', 'markerfacecolor', 'w')
+plot(kmlen5, PGV_total{5}, 'o', 'markerfacecolor', 'w')
+plot(kmlen6, PGV_total{6}, 'o', 'markerfacecolor', 'w')
+plot(kmlen7, PGV_total{7}, 'd', 'markerfacecolor', 'k')
+plot(kmlen8, PGV_total{8}, 'd', 'markerfacecolor', 'k')
+plot(kmlen10, PGV_total{10}, 'd', 'markerfacecolor', 'k')
+plot(kmlen11, PGV_total{11}, 'd', 'markerfacecolor', 'k')
+plot(kmlen12, PGV_total{12}, 'd', 'markerfacecolor', 'k')
+plot(kmlen13, PGV_total{13}, 'd', 'markerfacecolor', 'k')
 plot(dist_value, v_t1, 'k--')
 plot(dist_value, v_t2, 'k--')
 plot(dist_value, v_t3, 'k--')
-title('PGV')
+title('Distance vs Peak Ground Velocity')
 xlabel('Distance (km)')
 ylabel('Peak Ground Velocity')
+legend('Brewton', 'Cogdell', 'Dagger','Fash','NCent Ark','Greeley','Irving',...
+   'OK','Raton','SunCity','Timp','Youngs')
 hold off
 
 figure(2)
 hold on 
-plot(kmlen1, PGA_total{1}, 'o', 'markerfacecolor', 'r')
-plot(kmlen2, PGA_total{2}, 'o', 'markerfacecolor', 'r')
-plot(kmlen3, PGA_total{3}, 'o', 'markerfacecolor', 'r')
-plot(kmlen4, PGA_total{4}, 'o', 'markerfacecolor', 'r')
-plot(kmlen5, PGA_total{5}, 'o', 'markerfacecolor', 'r')
-plot(kmlen6, PGA_total{6}, 'o', 'markerfacecolor', 'r')
-plot(kmlen7, PGA_total{7}, 'o', 'markerfacecolor', 'r')
-plot(kmlen8, PGA_total{8}, 'o', 'markerfacecolor', 'r')
-plot(kmlen10, PGA_total{10}, 'o', 'markerfacecolor', 'r')
-plot(kmlen11, PGA_total{11}, 'o', 'markerfacecolor', 'r')
-plot(kmlen12, PGA_total{12}, 'o', 'markerfacecolor', 'r')
-plot(kmlen13, PGA_total{13}, 'o', 'markerfacecolor', 'r')
+plot(kmlen1, PGA_total{1}, 'o', 'markerfacecolor', 'w')
+plot(kmlen2, PGA_total{2}, 'o', 'markerfacecolor', 'w')
+plot(kmlen3, PGA_total{3}, 'o', 'markerfacecolor', 'w')
+plot(kmlen4, PGA_total{4}, 'o', 'markerfacecolor', 'w')
+plot(kmlen5, PGA_total{5}, 'o', 'markerfacecolor', 'w')
+plot(kmlen6, PGA_total{6}, 'o', 'markerfacecolor', 'w')
+plot(kmlen7, PGA_total{7}, 'd', 'markerfacecolor', 'k')
+plot(kmlen8, PGA_total{8}, 'd', 'markerfacecolor', 'k')
+plot(kmlen10, PGA_total{10}, 'd', 'markerfacecolor', 'k')
+plot(kmlen11, PGA_total{11}, 'd', 'markerfacecolor', 'k')
+plot(kmlen12, PGA_total{12}, 'd', 'markerfacecolor', 'k')
+plot(kmlen13, PGA_total{13}, 'd', 'markerfacecolor', 'k')
 plot(dist_value, a_t1, 'k--')
 plot(dist_value, a_t2, 'k--')
 plot(dist_value, a_t3, 'k--')
-title('PGA')
+title('Distance vs Peak Ground Acceleration')
 xlabel('Distance (km)')
 ylabel('Peak Ground Acceleration')
+legend('Brewton', 'Cogdell', 'Dagger','Fash','NCent Ark','Greeley','Irving',...
+   'OK','Raton','SunCity','Timp','Youngs')
 hold off
+
+% -----------------------------------------------------------------------

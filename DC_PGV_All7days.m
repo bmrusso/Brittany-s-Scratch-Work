@@ -1,6 +1,8 @@
 % Removes the double counting on the earthquakes that pass the specific
 % threshold.
 
+% ----------------------------------------------------------------------
+
 clc, clearvars -EXCEPT or_dates
 
 % Load the threshold data
@@ -209,6 +211,7 @@ m_before = find(all_before{3}{11} > 0);
 m_after = find(all_after{3}{11} >0);
 all_subtract{3}{11}(3) = 0;
 
+% -----------------------------------------------------------------------
 %% Plotting the cumulative sum
 
 for ii=1:3

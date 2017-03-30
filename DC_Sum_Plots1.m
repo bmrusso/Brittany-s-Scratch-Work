@@ -159,7 +159,7 @@ hold off
 
 clear 
 
-% Plotting Oklahoma-Kansas
+Plotting Oklahoma-Kansas
 
 load fixed_dc1
 

@@ -287,6 +287,29 @@ totsubtract{9}(173) = 1;
 
 fixokks3 = totsubtract{9}; % Corrected for double counting
 
+hold on
+stem(squaredate{9}, magn{9}, 'g')
+stem(m7date, ma, 'r--')
+datetick('x', 1)
+
+rateaft = find(totafter{9} >0);
+ratebef = find(totbefore{9} > 0);
+
+stem(m7date(rateaft), ma(rateaft), 'k')
+stem(m7date(ratebef), ma(ratebef), 'b')
+
+stem(m7date(rateaft)+7, ma(rateaft), 'c-')
+stem(m7date(rateaft)-7, ma(rateaft), 'c-')
+
+stem(m7date(ratebef)+7, ma(ratebef), 'm-')
+stem(m7date(ratebef)-7, ma(ratebef), 'm-')
+
+stem(m7date(80), ma(80), 'y--')
+stem(m7date(81), ma(81), 'y--')
+stem(m7date(78), ma(78), 'y--')
+stem(m7date(79), ma(79), 'y--')
+
+hold off
 
 %% Double Counting Correction For Paradox
 
@@ -441,7 +464,7 @@ fixyoungs3 = totsubtract{15}; % Corrected for double counting
 %Plotting the earthquakes
 
 % hold on
-% stem(squaredate{15}, magn{15}, 'g')
+% stem(squaredate{9}, magn{9}, 'g')
 % stem(m7date, ma, 'r--')
 % datetick('x', 1)
 % 
@@ -456,12 +479,12 @@ fixyoungs3 = totsubtract{15}; % Corrected for double counting
 % 
 % stem(m7date(ratebef)+7, ma(ratebef), 'm-')
 % stem(m7date(ratebef)-7, ma(ratebef), 'm-')
-
+% 
 % stem(m7date(12), ma(12), 'y--')
 % stem(m7date(13), ma(13), 'y--')
 % stem(m7date(78), ma(78), 'y--')
 % stem(m7date(79), ma(79), 'y--')
-
+% 
 % hold off
 
 save fixed_dc3

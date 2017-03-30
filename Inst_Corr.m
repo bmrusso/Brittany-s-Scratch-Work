@@ -1,16 +1,22 @@
 % Fetches iris data for the telelseisms and applies the fixes of missing
-% data and then does the instrument correction
+% data and then does the instrument correction to the waveform data
+
+% -----------------------------------------------------------------------
 
 clc, clear all
 
 load Max_SRATE.mat
-load paradox_struct.mat
+load Paradox_struct.mat
+
+% Pre-allocating variables
+
+    uncorrseismograms=zeros(length(paradox_data)*6,maxvector(9)*7197);
+    corrseismograms=uncorrseismograms;
+
+% Loads in the start and end time of each teleseism
 
 strtdatelist=textread('./Teleseism_StrDates/Strt_Names.txt','%s');
 enddatelist=textread('./Teleseism_EnDates/End_Names.txt','%s');
-    
-    uncorrseismograms=zeros(length(paradox_data)*6,maxvector(9)*7197);
-    corrseismograms=uncorrseismograms;
     
     fid = fopen(['./Teleseism_StrDates/' strtdatelist{9}]);
     srtdata = textscan(fid, '%s%s');
@@ -19,6 +25,8 @@ enddatelist=textread('./Teleseism_EnDates/End_Names.txt','%s');
     fid = fopen(['./Teleseism_EnDates/' enddatelist{9}]);
     enddata = textscan(fid, '%s%s');
     fclose(fid);
+    
+    % Converting the start and end times to the required format
     
     srtdata1 = num2str(cell2mat(srtdata{1}));
     srtdata2 = cell2mat(srtdata{2});
@@ -29,6 +37,8 @@ enddatelist=textread('./Teleseism_EnDates/End_Names.txt','%s');
     junk1 = [];
     junk2 = [];
     zonedata = [];
+    
+    % Instrument correcting
     
     for ii=1:length(paradox_data)
         
@@ -48,7 +58,7 @@ enddatelist=textread('./Teleseism_EnDates/End_Names.txt','%s');
         tc1 = sec2cal(t1);
         tc2 = sec2cal(t2);
         
-        % Displays when there is more than one location
+        % Displays when there is more than one location and removes them
         channellocations = [ ];
         
         for loco=1:length(dta)
@@ -152,4 +162,4 @@ enddatelist=textread('./Teleseism_EnDates/End_Names.txt','%s');
         
     end
   
-
+% ------------------------------------------------------------------------

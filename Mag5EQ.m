@@ -1,4 +1,8 @@
-% Gathering Catalog data for magnitude 5 earthquakes near the zones
+% Gathering Catalog data for magnitude 5 earthquakes near the zones and
+% counting the number of earthquakes 7 days before and 7 days after a
+% magnitude 5 earthquake. 
+
+% -----------------------------------------------------------------------
 
 clear
 
@@ -99,4 +103,9 @@ for ii=1:length(zonelist)
     
 end
 
-save mag5data
+% save mag5data
+
+csum1 = cumsum(totsubtract{9});
+plot(csum1)
+
+% -----------------------------------------------------------------------

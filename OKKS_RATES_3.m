@@ -114,10 +114,12 @@ figure(1)
 clf
 hold on
 plot(datevector, numeq3)
-plot(datevector2, cumsum(eq3), 'r')
-legend('Number of Randomly Generated Teleseisms', 'Cumulative Sum of Randomly Generated Teleseisms')
+plot(datevector2, cumsum(eq3))
+legend('Number of Earthquakes per 3 Days', 'Cumulative Sum of Earthquakes')
 datetick('x', 1)
-title('Randomly Generated Teleseisms - 3 Days')
+title('Cumulative Sum vs. the Number of Earthquakes per 3 Day')
+xlabel('Date')
+ylabel('Number of Earthquakes')
 hold off 
 
 % -----------------------------------------------------------------------

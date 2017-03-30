@@ -178,7 +178,7 @@ hold off
 
 clear 
 
-% Plotting Paradox
+Plotting Paradox
 
 load fixed_dc7
 

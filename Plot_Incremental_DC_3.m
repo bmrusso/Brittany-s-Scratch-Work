@@ -137,12 +137,12 @@ randcumsum = cumsum(randvector, 2);
 
 load fixed_dc3
 
-% [y,mo,d,h,mi,s,~,~,~,ma] = LoadComCat(datenum(2006, 1, 1), ...
-%     datenum(2017, 1, 1), 7, [-90 90 -180 180]);
+ [y,mo,d,h,mi,s,~,~,~,ma] = LoadComCat(datenum(2006, 1, 1), ...
+     datenum(2017, 1, 1), 7, [-90 90 -180 180]);
 
 cum_sum1 = cumsum(fixokks3);
 
-% m7date = datenum(y, mo, d, h, mi, s);
+m7date = datenum(y, mo, d, h, mi, s);
 
 
 % plot(m7date, cum_sum1*7)
@@ -151,8 +151,11 @@ cum_sum1 = cumsum(fixokks3);
 % hold off
 
     hold on
-plot(cum_sum1, 'k', 'linewidth', 2.5)
-plot(randcumsum')
+plot(m7date, cum_sum1, 'k', 'linewidth', 2.5)
+plot(m7date, randcumsum')
 legend('Actual Data')
-title('Random Walk - 3 Days')
+title('Oklahoma Random Walk - 3 Days')
+datetick('x',1)
+xlabel('Date')
+ylabel('Cumulative Sum')
 hold off

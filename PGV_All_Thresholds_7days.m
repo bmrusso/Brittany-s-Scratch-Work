@@ -3,6 +3,8 @@
 % show the rate of the occurance of earthquakes before or after a
 % teleseism.
 
+% -----------------------------------------------------------------------
+
 clc, clear
 
 load peak_ground_data.mat
@@ -164,4 +166,6 @@ for thres=1:length(threshold)
 end
 
 save('PGV_All7.mat') 
+
+% ----------------------------------------------------------------------
     
