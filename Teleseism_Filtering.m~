@@ -17,8 +17,8 @@ datevector = datenum(year, month, day, hour, mi, sec);
 % date_end = addtodate(datevector(155), 3, 'hour');
 bef_date = datevector - hours(3);
 
-phc = irisFetch.Traces('TA','T25A','*','BH?',datestr(bef_date(116), 31),...
-    datestr(datevector(116), 31));
+phc = irisFetch.Traces('TA','T25A','*','BH?',datestr(bef_date(108), 31),...
+    datestr(datevector(108), 31));
 
 x = 0:(1/40)/3600:432000*((1/40)/3600);
 
@@ -55,7 +55,7 @@ local_dates = zeros(length(num_sec), 1);
 
 for i=1:length(num_sec)
     
-    local_time = addtodate(datevector(116), num_sec(i), 'second');
+    local_time = addtodate(datevector(107), num_sec(i), 'second');
     
     local_dates(i,:) = local_time;
     
