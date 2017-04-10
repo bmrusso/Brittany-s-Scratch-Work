@@ -89,7 +89,18 @@ for ii=1:length(zonelist)
     
     totsubtract{ii}(negindex{ii}) = -1;     % Replacing 'more earthquakes before' with -1
     totsubtract{ii}(posindex{ii}) = 1;      % Replacing 'more earthquakes after' wtih 1
-    
+        all_dates{ii} = m7date;
+
 end
 
-save mag5data3
+%save mag5data3
+
+hold on
+csum1 = cumsum(totsubtract{9});
+plot(all_dates{9},csum1,'ro')
+plot(all_dates{9},csum1)
+datetick('x',2)
+xlabel('Date')
+ylabel('Cumulative Sum')
+title('Cumulative Sum of the Mainshocks')
+hold off
