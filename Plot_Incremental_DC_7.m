@@ -149,9 +149,8 @@ m7date = datenum(y, mo, d, h, mi, s);
 % hold off
 
     hold on
+    plot(m7date, randcumsum')
 plot(m7date, cum_sum1, 'k', 'linewidth', 2.5)
-plot(m7date, randcumsum')
-legend('Actual Data')
 title('Oklahoma Random Walk - 7 Days')
 datetick('x',1)
 xlabel('Date')

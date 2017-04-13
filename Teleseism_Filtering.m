@@ -1,6 +1,8 @@
 % Identifying local earthquakes by high passing the data of teleseisms
+% Raton Data from 1/1/2008 until 1/1/2017 at TA T25A
+% Oklahoma data from 3/13/2010 until 2/20/2012 at TA V35A
 
-clc, clearvars -EXCEPT localeq_dates localeq_data befeq_dates befeq_data
+clc, clearvars -EXCEPT OK_dates OK_data BeOK_dates BeOK_data
 
 % load filtered_data.mat
 load peak_ground_data.mat
@@ -11,21 +13,22 @@ load MAX_SRATE.mat
 
 
 
-[year,month,day,hour,mi,sec] = LoadComCat(datenum(2008, 1, 1), ...
-  datenum(2017, 1, 1), 7, [-90 90 -180 180]);
+[year,month,day,hour,mi,sec] = LoadComCat(datenum(2010, 3, 13), ...
+  datenum(2012, 2, 20), 7, [-90 90 -180 180]);
 
 datevector = datenum(year, month, day, hour, mi, sec);
     
-date_end = addtodate(datevector(148), 3, 'hour');
+% date_end = addtodate(datevector(40), 3, 'hour');
+bef_date = datevector - hours(3);
 
-phc = irisFetch.Traces('TA','T25A','*','BH?',datestr(datevector(148), 31),...
-    datestr(date_end, 31));
+phc = irisFetch.Traces('TA','V35A','*','BH?',datestr(bef_date(17), 31),...
+    datestr(datevector(17), 31));
 
-x = 0:(1/40)/3600:432000*((1/40)/3600);
 
 if length(phc) > 0
     
     for ii=1:3
+        x = 0:(1/40)/3600:(length(phc(ii).data)-1)*((1/40)/3600);
         f{ii} = hp(phc(ii).data, phc(ii).sampleRate,5);
         figure(3)
         subplot(6,1,ii)
@@ -48,21 +51,21 @@ if length(phc) > 0
 
 end
 
-% gin_data = ginput;
-% 
-% num_sec = round(gin_data(:,1)*3600);
-% 
-% local_dates = zeros(length(num_sec), 1);
-% 
-% for i=1:length(num_sec)
-%     
-%     local_time = addtodate(datevector(155), num_sec(i), 'second');
-%     
-%     local_dates(i,:) = local_time;
-%     
-% end
-% 
-% localeq = datestr(local_dates);
+gin_data = ginput;
+
+num_sec = round(gin_data(:,1)*3600);
+
+local_dates = zeros(length(num_sec), 1);
+
+for i=1:length(num_sec)
+    
+    local_time = addtodate(datevector(40), num_sec(i), 'second');
+    
+    local_dates(i,:) = local_time;
+    
+end
+
+localeq = datestr(local_dates);
 
 %% Using EQ Above Threshold
 

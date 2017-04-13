@@ -79,7 +79,7 @@ figure(2)
 hold on 
 plot(datevector(PGV_index{3}), cumsum(sub_vector(PGV_index{3})))
 plot(datevector(PGV_index{3}), cumsum(sub_vector(PGV_index{3})), 'ro')
-title('PGV - Thres 2.0x10^-^4')
+title('PGV - Thres 2.x0^-^4')
 ylim([-8 8])
 datetick('x',2)
 hold off
@@ -88,7 +88,7 @@ figure(3)
 hold on
 plot(datevector(PGV_index{2}), cumsum(sub_vector(PGV_index{2})))
 plot(datevector(PGV_index{2}), cumsum(sub_vector(PGV_index{2})), 'ro')
-title('PGV - Thres 1.0x10^-^3')
+title('PGV - Thres 1.4x10^-^3')
 ylim([-2 2])
 datetick('x',2)
 hold off
